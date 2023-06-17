@@ -40,7 +40,7 @@ export class App extends React.Component<{}, State> {
         <div className="h-screen flex flex-col gap-5 items-center justify-center">
           <textarea
             className="p-2 w-[500px] text-black border-2 border-red-500 rounded focus:outline-none font-medium shadow-2xl"
-            placeholder="Números das Imagens"
+            placeholder="1232,1232,1232..."
             value={numerosString}
             onChange={this.handleChange}
           />
