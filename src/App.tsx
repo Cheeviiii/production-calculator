@@ -35,12 +35,13 @@ export class App extends React.Component<{}, State> {
     const { numerosString, resultado } = this.state;
 
     return (
-      <div className="w-[1200px] h-screen flex flex-col items-center p-auto m-auto">
+      <div className="w-full h-screen flex flex-col items-center p-auto m-auto">
         <Darkmode />
         <div className="h-screen flex flex-col gap-5 items-center justify-center">
+          <h1 className="font-medium text-2xl">Calcule sua produção diária.</h1>
           <textarea
-            className="p-2 w-[500px] text-black border-2 border-red-500 rounded focus:outline-none font-medium shadow-2xl"
-            placeholder="1232,1232,1232..."
+            className="p-2 w-[350px] md:w-[500px] text-black border-2 border-red-500 rounded focus:outline-none font-medium shadow-2xl"
+            placeholder="Exemplo: 1234,1234,1234..."
             value={numerosString}
             onChange={this.handleChange}
           />
