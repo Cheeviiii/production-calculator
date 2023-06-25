@@ -6,20 +6,24 @@ export const App = () => {
   const [resultado, setResultado] = useState(0);
 
   const calcularNumeros = () => {
-    const numerosArray = numerosString
-      .split(",")
-      .map((numero) => parseFloat(numero));
-    const resultado = numerosArray.reduce(
-      (acumulator, numero) => acumulator + numero,
-      0
-    );
+    try {
+      const numerosArray = numerosString
+        .split(",")
+        .map((numero) => parseFloat(numero));
+      const resultado = numerosArray.reduce(
+        (acumulator, numero) => acumulator + numero,
+        0
+      );
 
-    setResultado(resultado);
+      setResultado(resultado);
+
+      if (Number.isNaN(resultado)) {
+        setResultado(0);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
-
-  if (Number.isNaN(resultado)) {
-    setResultado(0)
-  }
 
   return (
     <div className="w-full h-screen flex flex-col items-center p-auto m-auto">
@@ -38,7 +42,11 @@ export const App = () => {
         >
           Calcular
         </button>
-        {resultado >=1 ? <p className="text-4xl font-bold">Resultado: {resultado}</p> : ''}
+        {resultado >= 1 ? (
+          <p className="text-4xl font-bold">Resultado: {resultado}</p>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
