@@ -38,7 +38,7 @@ export const App = () => {
         >
           Calcular
         </button>
-        <p className="text-4xl font-bold">Resultado: {resultado}</p>
+        {resultado >=1 ? <p className="text-4xl font-bold">Resultado: {resultado}</p> : ''}
       </div>
     </div>
   );
