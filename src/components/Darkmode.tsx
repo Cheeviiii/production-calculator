@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export const Darkmode = () => {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     const savedMode = localStorage.getItem("darkMode");
-    return savedMode ? JSON.parse(savedMode) : false
+    return savedMode ? JSON.parse(savedMode) : false;
   });
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export const Darkmode = () => {
       body?.classList.remove("dark");
     }
 
-    localStorage.setItem("darkMode", JSON.stringify(darkMode))
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
   }, [darkMode]);
 
   const handleDarkModeToggle = () => {
@@ -26,7 +26,7 @@ export const Darkmode = () => {
         htmlFor="darkModeToggle"
         className="flex items-center cursor-pointer"
       >
-        <span className="mr-2 font-bold">Dark Mode</span>
+        <span className="mr-2 font-bold uppercase">Dark Mode</span>
         <input
           id="darkModeToggle"
           type="checkbox"
@@ -35,7 +35,11 @@ export const Darkmode = () => {
           className="hidden"
         />
         <span className="relative">
-          <span className="block w-10 h-6 bg-gray-400 rounded-full"></span>
+          <span
+            className={`block w-10 h-6 bg-gray-400 rounded-full ${
+              darkMode ? "bg-red-500" : ""
+            }`}
+          ></span>
           <span
             className={`absolute block w-4 h-4 bg-white rounded-full left-1 top-1 transition-transform ${
               darkMode ? "transform translate-x-4" : ""
