@@ -1,29 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Darkmode } from "./components/Darkmode";
 
 export const App = () => {
   const [numerosString, setNumerosString] = useState("");
   const [resultado, setResultado] = useState(0);
 
-  const calcularNumeros = () => {
-    try {
-      const numerosArray = numerosString
-        .split(",")
-        .map((numero) => parseFloat(numero));
-      const resultado = numerosArray.reduce(
-        (acumulator, numero) => acumulator + numero,
-        0
-      );
+  useEffect(() => {
+    const calcularNumeros = () => {
+      try {
+        const numerosArray = numerosString
+          .split(",")
+          .map((numero) => parseFloat(numero));
+        const resultado = numerosArray.reduce(
+          (acumulator, numero) => acumulator + numero,
+          0
+        );
 
-      setResultado(resultado);
+        setResultado(resultado);
 
-      if (Number.isNaN(resultado)) {
-        setResultado(0);
+        if (Number.isNaN(resultado)) {
+          setResultado(0);
+        }
+      } catch (err) {
+        console.error(err);
       }
-    } catch (err) {
-      console.error(err);
-    }
-  };
+    };
+
+    calcularNumeros();
+  }, [numerosString]);
 
   return (
     <div className="w-full h-screen flex flex-col items-center p-auto m-auto">
@@ -36,17 +40,7 @@ export const App = () => {
           value={numerosString}
           onChange={(e) => setNumerosString(e.target.value)}
         />
-        <button
-          className="bg-red-500 p-2 px-10 rounded text-white font-bold uppercase transition-transform hover:scale-110 shadow-2xl"
-          onClick={calcularNumeros}
-        >
-          Calcular
-        </button>
-        {resultado >= 1 ? (
-          <p className="text-4xl font-bold">Resultado: {resultado}</p>
-        ) : (
-          ""
-        )}
+        <p className="text-4xl font-bold">Resultado: {resultado}</p>
       </div>
     </div>
   );
