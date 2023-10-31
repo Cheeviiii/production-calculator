@@ -40,6 +40,7 @@ export const App = () => {
           value={numerosString}
           onChange={(e) => setNumerosString(e.target.value)}
         />
+        <h1 className="absolute bottom-0 right-0 m-3 bg-red-500 p-2 px-5 rounded-3xl text-bold text-xl text-white">Alguem ainda usa isso?</h1>
         <p className="text-4xl font-bold">Resultado: {resultado}</p>
       </div>
     </div>
